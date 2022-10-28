@@ -9,7 +9,7 @@ switch (Console.ReadKey().KeyChar.ToString().ToLower())
     case "r":
         System.Console.Write("\nЗадайте желаемую размерность массива: ");
         int arrayLength = InputNumbers();
-        string[] stringArrayR = FillArrayRandomized(arrayLength);
+        string[] stringArrayR = FillArrayRandomized(arrayLength,9);
         PrintArray(stringArrayR);
         string[] newStringArrayR = MakeShortArray(stringArrayR);
         System.Console.WriteLine("И получилось из него:");
@@ -39,7 +39,7 @@ string[] FillArrayFromString(string inputstring)
     return tempArray;
 }
 
-string[] FillArrayRandomized(int arrayLength)
+string[] FillArrayRandomized(int arrayLength,int maxLength)
 {
     string symbolString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     int symbolStringLength = symbolString.Length;
@@ -47,7 +47,7 @@ string[] FillArrayRandomized(int arrayLength)
     var r = new Random();
     for (int i = 0; i < arrayLength; i++)
     {
-        int n = r.Next(1, 10);
+        int n = r.Next(1, maxLength);
         for (int j = 0; j < n; j++)
         {
             tempArray[i] += symbolString[r.Next(0, symbolStringLength)];
